@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ella Enhances | Beauty Designed by God, Enhanced by Ella</title>
+  <meta name="description" content="Luxury beauty treatments in Michigan. Brow design, lash extensions, and more — personalized to elevate your natural beauty." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════════════════
+       RESET & TOKENS
+    ═══════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* Brand exact from logo */
+      --purple:       #8B2FC9;
+      --purple-mid:   #A855F7;
+      --purple-light: #C084FC;
+      --pink:         #E8748A;
+      --pink-light:   #F4A0B0;
+      --coral:        #E8748A;
+
+      /* Surfaces */
+      --black:        #080609;
+      --black-2:      #0E0B12;
+      --black-3:      #141018;
+      --glass:        rgba(255,255,255,0.035);
+      --glass-border: rgba(255,255,255,0.07);
+      --glass-hover:  rgba(255,255,255,0.06);
+
+      /* Glows */
+      --glow-purple:  rgba(139,47,201,0.45);
+      --glow-pink:    rgba(232,116,138,0.35);
+
+      /* Text */
+      --white:        #FAF8FC;
+      --white-dim:    rgba(250,248,252,0.6);
+      --white-dimmer: rgba(250,248,252,0.35);
+
+      /* Type */
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'Jost', system-ui, sans-serif;
+
+      /* Motion */
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--sans);
+      font-weight: 300;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Grain texture */
+    body::after {
+      content: '';
+      position: fixed; inset: 0; z-index: 9999;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(var(--purple), var(--pink)); border-radius: 2px; }
+
+    /* ─── Type scale ─── */
+    h1, h2, h3, h4 {
+      font-family: var(--serif);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+    }
+    h1 { font-size: clamp(3.2rem, 8vw, 7rem); }
+    h2 { font-size: clamp(2.4rem, 5vw, 4rem); }
+    h3 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); }
+    p  { line-height: 1.85; font-size: clamp(0.9rem, 1.4vw, 1rem); }
+
+    .gradient-text {
+      background: linear-gradient(130deg, var(--purple-light) 0%, var(--pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .serif-italic { font-style: italic; }
+    .label {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--purple-mid);
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    /* ─── Layout ─── */
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+    section { position: relative; overflow: hidden; }
+
+    /* ─── Gradient line divider ─── */
+    .g-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--purple) 30%, var(--pink) 70%, transparent 100%);
+      opacity: 0.3;
+    }
+
+    /* ─── Buttons ─── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--sans); font-size: 0.78rem; font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none;
+      border: none; cursor: pointer; padding: 15px 36px; border-radius: 100px;
+      transition: all 0.4s var(--ease); position: relative; overflow: hidden;
+    }
+    .btn-primary {
+      background: linear-gradient(130deg, var(--purple) 0%, var(--pink) 100%);
+      color: var(--white);
+      box-shadow: 0 0 40px rgba(139,47,201,0.4), 0 0 80px rgba(139,47,201,0.15);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 60px rgba(139,47,201,0.55), 0 0 100px rgba(139,47,201,0.2), 0 10px 30px rgba(0,0,0,0.3);
+    }
+    .btn-ghost {
+      background: var(--glass); color: var(--white);
+      border: 1px solid var(--glass-border); backdrop-filter: blur(12px);
+    }
+    .btn-ghost:hover {
+      background: rgba(139,47,201,0.1); border-color: rgba(139,47,201,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px rgba(139,47,201,0.15);
+    }
+
+    /* ─── Glass card ─── */
+    .glass-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      backdrop-filter: blur(16px);
+      transition: all 0.4s var(--ease);
+    }
+    .glass-card:hover {
+      background: var(--glass-hover);
+      border-color: rgba(139,47,201,0.25);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(139,47,201,0.08);
+    }
+
+    /* ─── Reveal animations ─── */
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.05s; } .d2 { transition-delay: 0.12s; }
+    .d3 { transition-delay: 0.2s; }  .d4 { transition-delay: 0.28s; }
+    .d5 { transition-delay: 0.36s; } .d6 { transition-delay: 0.44s; }
+
+    /* ═══════════════════════════════════════════════════
+       NAV
+    ═══════════════════════════════════════════════════ */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 28px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: all 0.5s var(--ease);
+    }
+    #nav.scrolled {
+      padding: 16px 48px;
+      background: rgba(8,6,9,0.82);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+    }
+    /* SVG logo mark inline */
+    .logo-mark svg { width: 36px; height: 36px; }
+    .logo-text {
+      font-family: var(--sans); font-size: 0.72rem; font-weight: 400;
+      letter-spacing: 0.35em; text-transform: uppercase; color: var(--white);
+    }
+    .logo-text span {
+      display: block; font-size: 0.52rem; letter-spacing: 0.2em;
+      color: var(--white-dim); margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex; gap: 36px; list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      text-decoration: none; color: var(--white-dim);
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--purple-light); }
+
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 6px; cursor: pointer;
+      background: none; border: none; padding: 4px;
+    }
+    .hamburger span { width: 22px; height: 1px; background: var(--white); display: block; transition: 0.3s; }
+
+    @media (max-width: 900px) {
+      #nav { padding: 20px 24px; }
+      #nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      .nav-right .btn { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* Mobile menu */
+    #mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 190;
+      background: rgba(8,6,9,0.97); backdrop-filter: blur(30px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+    }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu a {
+      font-family: var(--serif); font-size: 2.2rem; font-style: italic;
+      color: var(--white); text-decoration: none; transition: color 0.3s;
+    }
+    #mobile-menu a:hover { color: var(--purple-light); }
+    #mobile-menu .close-btn {
+      position: absolute; top: 28px; right: 28px;
+      background: none; border: none; color: var(--white-dim);
+      font-size: 1.6rem; cursor: pointer;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       1. HERO
+    ═══════════════════════════════════════════════════ */
+    #hero {
+      min-height: 100svh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 140px 32px 100px;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 90% 70% at 50% 20%, rgba(139,47,201,0.16) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 85% 80%, rgba(232,116,138,0.1) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 10% 70%, rgba(168,85,247,0.07) 0%, transparent 55%);
+    }
+
+    /* Animated orbs */
+    .orb { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; animation: drift 10s ease-in-out infinite; }
+    .orb-1 { width: 600px; height: 600px; top: -180px; left: -160px; background: rgba(139,47,201,0.1); }
+    .orb-2 { width: 500px; height: 500px; bottom: -120px; right: -120px; background: rgba(232,116,138,0.08); animation-delay: -4s; animation-duration: 12s; }
+    .orb-3 { width: 350px; height: 350px; top: 35%; left: 55%; background: rgba(168,85,247,0.07); animation-delay: -7s; animation-duration: 9s; }
+
+    @keyframes drift {
+      0%,100% { transform: translate(0,0); }
+      33%  { transform: translate(40px,-30px); }
+      66%  { transform: translate(-25px,25px); }
+    }
+
+    .hero-content { position: relative; z-index: 2; max-width: 860px; }
+
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--purple-light); margin-bottom: 36px;
+      padding: 9px 22px; border-radius: 100px;
+      background: rgba(139,47,201,0.08);
+      border: 1px solid rgba(139,47,201,0.22);
+      backdrop-filter: blur(8px);
+      animation: fadeSlideDown 1s var(--ease) 0.2s both;
+    }
+    .hero-pill::before, .hero-pill::after { content: '✦'; font-size: 0.55rem; color: var(--pink); }
+
+    .hero-h1 {
+      animation: fadeSlideUp 1.1s var(--ease) 0.35s both;
+      margin-bottom: 28px;
+    }
+    .hero-h1 .line-1 { display: block; color: var(--white); }
+    .hero-h1 .line-2 {
+      display: block; font-style: italic;
+      background: linear-gradient(130deg, var(--purple-light) 0%, var(--pink) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .hero-sub {
+      color: var(--white-dim); max-width: 500px; margin: 0 auto 52px;
+      font-size: 1.05rem; letter-spacing: 0.02em;
+      animation: fadeSlideUp 1.1s var(--ease) 0.5s both;
+    }
+
+    .hero-btns {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+      animation: fadeSlideUp 1.1s var(--ease) 0.65s both;
+    }
+
+    /* Stats bar */
+    .hero-stats {
+      position: absolute; bottom: 48px; left: 0; right: 0;
+      display: flex; justify-content: center; gap: 56px; z-index: 2;
+      animation: fadeIn 1.2s var(--ease) 1s both;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: var(--serif); font-size: 2rem; font-weight: 300;
+      background: linear-gradient(130deg, var(--purple-light), var(--pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      display: block; line-height: 1;
+    }
+    .stat-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-dimmer); margin-top: 6px; }
+
+    @media (max-width: 640px) {
+      .hero-stats { gap: 28px; bottom: 32px; }
+      .stat-num { font-size: 1.6rem; }
+    }
+
+    @keyframes fadeSlideDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:none; } }
+    @keyframes fadeSlideUp   { from { opacity:0; transform:translateY(30px);  } to { opacity:1; transform:none; } }
+    @keyframes fadeIn        { from { opacity:0; } to { opacity:1; } }
+
+    /* ═══════════════════════════════════════════════════
+       2. ABOUT
+    ═══════════════════════════════════════════════════ */
+    #about {
+      padding: 120px 0 100px;
+      background: linear-gradient(180deg, var(--black) 0%, var(--black-2) 50%, var(--black) 100%);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+      margin-bottom: 80px;
+    }
+    @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; gap: 48px; } }
+
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-frame {
+      width: 100%; aspect-ratio: 3/4; border-radius: 24px;
+      background: linear-gradient(145deg, var(--black-3), var(--black-2));
+      border: 1px solid var(--glass-border);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; position: relative;
+    }
+    .about-img-frame::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(145deg, rgba(139,47,201,0.08) 0%, transparent 60%, rgba(232,116,138,0.06) 100%);
+    }
+    .portrait-placeholder {
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+      color: var(--white-dimmer); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+    }
+    .portrait-icon {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: linear-gradient(135deg, rgba(139,47,201,0.2), rgba(232,116,138,0.2));
+      border: 1px solid rgba(139,47,201,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+    }
+
+    /* Decorative corner accent */
+    .about-img-wrap::before {
+      content: '';
+      position: absolute; top: -16px; left: -16px;
+      width: 120px; height: 120px;
+      border-top: 1px solid var(--purple); border-left: 1px solid var(--purple);
+      border-radius: 4px; opacity: 0.4; pointer-events: none;
+    }
+    .about-img-wrap::after {
+      content: '';
+      position: absolute; bottom: -16px; right: -16px;
+      width: 120px; height: 120px;
+      border-bottom: 1px solid var(--pink); border-right: 1px solid var(--pink);
+      border-radius: 4px; opacity: 0.4; pointer-events: none;
+    }
+
+    .about-text { }
+    .about-bio {
+      color: var(--white-dim); margin: 24px 0 36px;
+      font-size: 1.02rem; line-height: 1.9;
+    }
+    .about-values {
+      display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px;
+    }
+    .value-tag {
+      padding: 7px 18px; border-radius: 100px;
+      background: rgba(139,47,201,0.08); border: 1px solid rgba(139,47,201,0.2);
+      font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--purple-light); transition: all 0.3s;
+    }
+    .value-tag:hover { background: rgba(139,47,201,0.15); border-color: rgba(139,47,201,0.4); }
+
+    /* Feature cards */
+    .feature-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    @media (max-width: 700px) { .feature-cards { grid-template-columns: 1fr; } }
+
+    .feature-card {
+      padding: 36px 28px; border-radius: 20px;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      transition: all 0.4s var(--ease); cursor: default;
+    }
+    .feature-card:hover {
+      background: rgba(139,47,201,0.06); border-color: rgba(139,47,201,0.25);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.35), 0 0 40px rgba(139,47,201,0.07);
+    }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: 14px; margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+      background: linear-gradient(135deg, rgba(139,47,201,0.15), rgba(232,116,138,0.15));
+      border: 1px solid rgba(139,47,201,0.2);
+    }
+    .feature-card h3 { font-size: 1.25rem; margin-bottom: 10px; }
+    .feature-card p { color: var(--white-dim); font-size: 0.9rem; line-height: 1.75; }
+
+    /* ═══════════════════════════════════════════════════
+       3. PORTFOLIO
+    ═══════════════════════════════════════════════════ */
+    #portfolio { padding: 100px 0; background: var(--black-2); }
+
+    .portfolio-header { text-align: center; margin-bottom: 60px; }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 16px;
+    }
+    @media (max-width: 700px) { .portfolio-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .portfolio-grid { grid-template-columns: 1fr; } }
+
+    .portfolio-item {
+      position: relative; border-radius: 16px; overflow: hidden;
+      cursor: pointer; background: var(--black-3);
+      border: 1px solid var(--glass-border);
+      aspect-ratio: 3/4;
+    }
+    .portfolio-item:nth-child(1) { grid-row: span 2; aspect-ratio: unset; }
+    @media (max-width: 700px) { .portfolio-item:nth-child(1) { grid-row: auto; aspect-ratio: 3/4; } }
+
+    .portfolio-thumb {
+      width: 100%; height: 100%;
+      background: linear-gradient(145deg, var(--black-3), rgba(139,47,201,0.06));
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; color: var(--white-dimmer);
+      font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+      transition: transform 0.5s var(--ease);
+    }
+    .portfolio-item:hover .portfolio-thumb { transform: scale(1.05); }
+
+    .thumb-icon { font-size: 2rem; opacity: 0.4; }
+
+    .portfolio-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      background: linear-gradient(to top, rgba(8,6,9,0.9) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.4s var(--ease);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 24px;
+    }
+    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+    .portfolio-overlay-label {
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--purple-light);
+    }
+    .portfolio-overlay-title { font-family: var(--serif); font-size: 1.2rem; font-style: italic; }
+
+    .zoom-hint {
+      position: absolute; top: 16px; right: 16px; z-index: 3;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(139,47,201,0.2); border: 1px solid rgba(139,47,201,0.3);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: scale(0.8); transition: all 0.3s var(--ease);
+      font-size: 0.9rem; color: var(--purple-light);
+      backdrop-filter: blur(8px);
+    }
+    .portfolio-item:hover .zoom-hint { opacity: 1; transform: scale(1); }
+
+    /* Lightbox */
+    #lightbox {
+      display: none; position: fixed; inset: 0; z-index: 500;
+      background: rgba(8,6,9,0.95); backdrop-filter: blur(20px);
+      align-items: center; justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    .lightbox-inner {
+      max-width: 700px; width: 90%;
+      background: var(--black-3); border: 1px solid var(--glass-border);
+      border-radius: 24px; overflow: hidden; position: relative;
+    }
+    .lightbox-img {
+      width: 100%; aspect-ratio: 4/5;
+      background: linear-gradient(145deg, var(--black-3), rgba(139,47,201,0.08));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white-dimmer); font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+    }
+    .lightbox-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--glass-border);
+      background: var(--glass); color: var(--white); font-size: 1.1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px);
+      transition: all 0.3s;
+    }
+    .lightbox-close:hover { background: rgba(232,116,138,0.15); border-color: var(--pink); }
+
+    /* ═══════════════════════════════════════════════════
+       4. BOOKING
+    ═══════════════════════════════════════════════════ */
+    #booking { padding: 100px 0; background: var(--black); }
+
+    .booking-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+    }
+    @media (max-width: 800px) { .booking-grid { grid-template-columns: 1fr; } }
+
+    .booking-left { }
+    .booking-trust {
+      display: flex; align-items: center; gap: 10px; margin-top: 32px;
+      padding: 14px 20px; border-radius: 12px;
+      background: rgba(139,47,201,0.06); border: 1px solid rgba(139,47,201,0.15);
+    }
+    .booking-trust-icon { font-size: 1.2rem; flex-shrink: 0; }
+    .booking-trust-text { font-size: 0.82rem; color: var(--white-dim); line-height: 1.5; }
+    .booking-trust-text strong { color: var(--purple-light); font-weight: 400; }
+
+    .service-select { margin-top: 36px; }
+    .service-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-dimmer); margin-bottom: 14px; }
+    .service-chips { display: flex; flex-direction: column; gap: 10px; }
+    .service-chip {
+      padding: 14px 20px; border-radius: 12px;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      cursor: pointer; transition: all 0.3s var(--ease);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .service-chip:hover, .service-chip.active {
+      background: rgba(139,47,201,0.1); border-color: rgba(139,47,201,0.4);
+    }
+    .service-chip.active { border-color: var(--purple); }
+    .service-name { font-size: 0.9rem; letter-spacing: 0.03em; }
+    .service-price { font-family: var(--serif); font-size: 1rem; color: var(--purple-light); }
+
+    .booking-right { }
+    .cal-embed-box {
+      border-radius: 20px; border: 1px solid var(--glass-border);
+      background: var(--glass); overflow: hidden; min-height: 480px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 20px; padding: 40px; text-align: center;
+    }
+    .cal-logo { font-size: 2.5rem; }
+    .cal-title { font-family: var(--serif); font-size: 1.5rem; color: var(--white-dim); }
+    .cal-sub { font-size: 0.85rem; color: var(--white-dimmer); max-width: 280px; }
+    .cal-embed-box .btn-primary { margin-top: 8px; }
+
+    /* Mini calendar UI */
+    .mini-slots { margin-top: 24px; width: 100%; }
+    .slots-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-dimmer); margin-bottom: 12px; }
+    .time-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .time-slot {
+      padding: 10px 8px; text-align: center; border-radius: 10px;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      font-size: 0.78rem; color: var(--white-dim); cursor: pointer;
+      transition: all 0.25s;
+    }
+    .time-slot:hover, .time-slot.sel {
+      background: rgba(139,47,201,0.12); border-color: rgba(139,47,201,0.4); color: var(--purple-light);
+    }
+    .time-slot.taken { opacity: 0.3; cursor: not-allowed; text-decoration: line-through; }
+
+    /* ═══════════════════════════════════════════════════
+       5. REVIEWS
+    ═══════════════════════════════════════════════════ */
+    #reviews { padding: 100px 0; background: var(--black-2); }
+
+    .reviews-header { text-align: center; margin-bottom: 56px; }
+
+    .reviews-track-wrap { overflow: hidden; position: relative; }
+    .reviews-track-wrap::before,
+    .reviews-track-wrap::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none;
+    }
+    .reviews-track-wrap::before { left: 0; background: linear-gradient(to right, var(--black-2), transparent); }
+    .reviews-track-wrap::after  { right: 0; background: linear-gradient(to left, var(--black-2), transparent); }
+
+    .reviews-slider {
+      display: flex; gap: 24px; padding: 16px 4px 32px;
+      overflow-x: auto; scroll-snap-type: x mandatory; -ms-overflow-style: none; scrollbar-width: none;
+    }
+    .reviews-slider::-webkit-scrollbar { display: none; }
+
+    .review-card {
+      min-width: 340px; max-width: 340px; padding: 32px 28px; border-radius: 20px;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      scroll-snap-align: start; flex-shrink: 0;
+      transition: all 0.4s var(--ease);
+    }
+    .review-card:hover {
+      border-color: rgba(139,47,201,0.25); transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 30px rgba(139,47,201,0.06);
+    }
+    .stars { display: flex; gap: 3px; margin-bottom: 18px; }
+    .star { color: var(--pink); font-size: 0.85rem; }
+    .review-text {
+      font-family: var(--serif); font-size: 1.05rem; font-style: italic;
+      color: var(--white-dim); line-height: 1.75; margin-bottom: 24px;
+    }
+    .review-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar {
+      width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 1rem; color: var(--white);
+    }
+    .author-name { font-size: 0.85rem; font-weight: 400; }
+    .author-service { font-size: 0.72rem; color: var(--white-dimmer); margin-top: 2px; letter-spacing: 0.08em; }
+
+    .slider-nav { display: flex; justify-content: center; gap: 8px; margin-top: 28px; }
+    .slider-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--glass-border); cursor: pointer; transition: all 0.3s;
+    }
+    .slider-dot.active {
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      width: 24px; border-radius: 3px;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       6. INSTAGRAM
+    ═══════════════════════════════════════════════════ */
+    #instagram { padding: 100px 0; background: var(--black); }
+
+    .ig-header { text-align: center; margin-bottom: 48px; }
+    .ig-handle {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 20px; border-radius: 100px; margin-top: 16px;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      font-size: 0.78rem; letter-spacing: 0.1em; color: var(--white-dim); text-decoration: none;
+      transition: all 0.3s;
+    }
+    .ig-handle:hover { border-color: rgba(139,47,201,0.4); color: var(--purple-light); }
+    .ig-icon { font-size: 1rem; }
+
+    .ig-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px; margin-bottom: 40px;
+    }
+    @media (max-width: 900px) { .ig-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 500px) { .ig-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .ig-post {
+      aspect-ratio: 1; border-radius: 12px; overflow: hidden;
+      background: var(--black-3); border: 1px solid var(--glass-border);
+      cursor: pointer; position: relative;
+      transition: all 0.4s var(--ease);
+    }
+    .ig-post:hover { border-color: rgba(139,47,201,0.3); transform: scale(1.03); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+    .ig-post-inner {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; opacity: 0.25;
+      background: linear-gradient(145deg, transparent, rgba(139,47,201,0.04));
+      transition: opacity 0.3s;
+    }
+    .ig-post:hover .ig-post-inner { opacity: 0.4; }
+    .ig-post-overlay {
+      position: absolute; inset: 0; background: rgba(139,47,201,0.15);
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .ig-post:hover .ig-post-overlay { opacity: 1; }
+
+    .ig-cta-wrap { text-align: center; }
+
+    /* ═══════════════════════════════════════════════════
+       7. FINAL CTA
+    ═══════════════════════════════════════════════════ */
+    #cta-final {
+      padding: 120px 0; text-align: center;
+      background: linear-gradient(180deg, var(--black) 0%, var(--black-2) 50%, var(--black) 100%);
+    }
+    .cta-glow-wrap {
+      position: relative; display: inline-block;
+    }
+    .cta-glow-wrap::before {
+      content: '';
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 500px; height: 300px;
+      background: radial-gradient(ellipse, rgba(139,47,201,0.18) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+    .cta-inner { position: relative; z-index: 1; }
+    .cta-final-h2 { margin-bottom: 16px; }
+    .cta-final-sub { color: var(--white-dim); margin-bottom: 44px; font-size: 1.05rem; }
+
+    /* Pulsing glow on CTA button */
+    .btn-glow-pulse {
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+    @keyframes pulseGlow {
+      0%,100% { box-shadow: 0 0 40px rgba(139,47,201,0.4), 0 0 80px rgba(139,47,201,0.15); }
+      50%      { box-shadow: 0 0 70px rgba(139,47,201,0.65), 0 0 120px rgba(232,116,138,0.2); }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       8. FOOTER
+    ═══════════════════════════════════════════════════ */
+    footer {
+      padding: 60px 0 40px;
+      background: var(--black-2);
+      border-top: 1px solid var(--glass-border);
+    }
+    .footer-inner {
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px;
+    }
+    @media (max-width: 700px) { .footer-inner { grid-template-columns: 1fr; gap: 32px; } }
+
+    .footer-brand { }
+    .footer-logo {
+      font-family: var(--sans); font-size: 0.85rem; font-weight: 400;
+      letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 14px; display: block;
+    }
+    .footer-tagline { font-family: var(--serif); font-size: 1.1rem; font-style: italic; color: var(--white-dim); }
+    .footer-socials { display: flex; gap: 12px; margin-top: 24px; }
+    .social-link {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: var(--white-dim); font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+    .social-link:hover { background: rgba(139,47,201,0.15); border-color: rgba(139,47,201,0.4); color: var(--purple-light); }
+
+    .footer-col h4 { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--white-dimmer); margin-bottom: 18px; font-weight: 400; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { text-decoration: none; color: var(--white-dim); font-size: 0.88rem; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--purple-light); }
+    .footer-contact { display: flex; flex-direction: column; gap: 12px; }
+    .contact-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--white-dim); }
+    .contact-item a { color: inherit; text-decoration: none; transition: color 0.3s; }
+    .contact-item a:hover { color: var(--purple-light); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--glass-border); padding-top: 28px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-copy { font-size: 0.75rem; color: var(--white-dimmer); letter-spacing: 0.08em; }
+    .footer-made { font-size: 0.72rem; color: var(--white-dimmer); }
+
+    /* ═══════════════════════════════════════════════════
+       INLINE LOGO SVG
+    ═══════════════════════════════════════════════════ */
+    .inline-logo-svg {
+      display: flex; align-items: center; gap: 10px; text-decoration: none;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       SECTION HEADER PATTERN
+    ═══════════════════════════════════════════════════ */
+    .section-head { text-align: center; margin-bottom: 56px; }
+    .section-head h2 { margin-top: 8px; }
+    .section-head p { color: var(--white-dim); max-width: 500px; margin: 16px auto 0; }
+
+    /* ═══════════════════════════════════════════════════
+       UTILITIES
+    ═══════════════════════════════════════════════════ */
+    .text-center { text-align: center; }
+    .mt-8  { margin-top: 8px; }
+    .mt-16 { margin-top: 16px; }
+    .mt-24 { margin-top: 24px; }
+    .mt-32 { margin-top: 32px; }
+    .mt-48 { margin-top: 48px; }
+    .flex-center { display: flex; align-items: center; justify-content: center; }
+    .gap-16 { gap: 16px; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════ MOBILE MENU ════════════ -->
+<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <button class="close-btn" onclick="closeMobile()" aria-label="Close menu">✕</button>
+  <a href="#about"     onclick="closeMobile()">About</a>
+  <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
+  <a href="#booking"   onclick="closeMobile()">Booking</a>
+  <a href="#reviews"   onclick="closeMobile()">Reviews</a>
+  <a href="#instagram" onclick="closeMobile()">Instagram</a>
+  <a href="#booking"   onclick="closeMobile()" class="btn btn-primary" style="margin-top:16px;"><span>Book Now</span></a>
+</div>
+
+<!-- ════════════ NAV ════════════ -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <a href="#" class="nav-logo inline-logo-svg" aria-label="Ella Enhances home">
+    <!-- Inline SVG logo mark matching brand -->
+    <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="lg1" x1="0" y1="0" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#8B2FC9"/>
+          <stop offset="100%" stop-color="#E8748A"/>
+        </linearGradient>
+      </defs>
+      <!-- Top + Left of bracket (open top-left corner) -->
+      <path d="M8 4 L8 34 L30 34" stroke="url(#lg1)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M8 4 L30 4" stroke="url(#lg1)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <!-- E letterform -->
+      <text x="14" y="25" font-family="Jost, sans-serif" font-size="13" font-weight="300" fill="url(#lg1)">E</text>
+    </svg>
+    <div class="logo-text">
+      Ella Enhances
+      <span>Beauty by God · Enhanced by Ella</span>
+    </div>
+  </a>
+
+  <ul class="nav-links" role="list">
+    <li><a href="#about">About</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#booking">Book</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#instagram">Instagram</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <a href="#booking" class="btn btn-primary"><span>Book Now</span></a>
+    <button class="hamburger" onclick="openMobile()" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ════════════ 1. HERO ════════════ -->
+<section id="hero" aria-label="Hero">
+  <div class="hero-bg"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <div class="hero-content">
+    <div class="hero-pill" role="text">Michigan's Premier Beauty Studio</div>
+
+    <h1 class="hero-h1">
+      <span class="line-1">Enhance Your</span>
+      <span class="line-2">Natural Beauty</span>
+    </h1>
+
+    <p class="hero-sub">
+      Luxury beauty treatments designed to elevate your confidence —<br>
+      crafted with precision, delivered with care.
+    </p>
+
+    <div class="hero-btns">
+      <a href="#booking" class="btn btn-primary btn-glow-pulse">
+        <span>✦ Book Appointment</span>
+      </a>
+      <a href="#portfolio" class="btn btn-ghost">
+        <span>View Portfolio</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-stats" role="region" aria-label="Studio stats">
+    <div class="stat">
+      <span class="stat-num">50+</span>
+      <span class="stat-label">Happy Clients</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">5★</span>
+      <span class="stat-label">Average Rating</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">4+</span>
+      <span class="stat-label">Years Experience</span>
+    </div>
+  </div>
+</section>
+
+<div class="g-line"></div>
+
+<!-- ════════════ 2. ABOUT ════════════ -->
+<section id="about" aria-label="About Ella Enhances">
+  <div class="container" style="padding-top:100px; padding-bottom:100px;">
+
+    <div class="about-grid">
+      <!-- Image -->
+      <div class="about-img-wrap reveal">
+        <div class="about-img-frame">
+          <div class="portrait-placeholder">
+            <div class="portrait-icon">✦</div>
+            <span>Ella · Lead Artist</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="about-text">
+        <span class="label reveal d1">About Ella Enhances</span>
+        <h2 class="reveal d2">Where Science<br><em class="serif-italic gradient-text">Meets Artistry</em></h2>
+        <p class="about-bio reveal d3">
+          Ella Enhances was built on one belief: every person deserves to feel like the most
+          beautiful version of themselves. As a Michigan-based luxury beauty studio, we specialize
+          in enhancing your natural features with precision techniques and premium products.
+        </p>
+        <p class="about-bio reveal d3" style="margin-top:-8px;">
+          Every treatment is fully personalized — because no two faces are the same, and your
+          beauty should never feel generic.
+        </p>
+
+        <div class="about-values reveal d4">
+          <span class="value-tag">Natural Results</span>
+          <span class="value-tag">Premium Products</span>
+          <span class="value-tag">Safe Techniques</span>
+          <span class="value-tag">Personalized Care</span>
+        </div>
+
+        <div class="mt-32 reveal d5">
+          <a href="#booking" class="btn btn-primary"><span>Start Your Journey</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature cards -->
+    <div class="feature-cards">
+      <div class="feature-card reveal d2">
+        <div class="feature-icon">🌿</div>
+        <h3>Natural Results</h3>
+        <p>We enhance what you already have — amplifying your natural beauty rather than masking it. Every look is intentionally crafted to feel authentically <em>you</em>.</p>
+      </div>
+      <div class="feature-card reveal d3">
+        <div class="feature-icon">✦</div>
+        <h3>Luxury Experience</h3>
+        <p>From the moment you arrive, every detail is thoughtfully curated. Expect a calm, elevated atmosphere where you feel seen, heard, and celebrated.</p>
+      </div>
+      <div class="feature-card reveal d4">
+        <div class="feature-icon">🛡️</div>
+        <h3>Trusted Expertise</h3>
+        <p>With years of specialized training and hundreds of satisfied clients, our techniques are safe, precise, and backed by a deep commitment to your wellbeing.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="g-line"></div>
+
+<!-- ════════════ 3. PORTFOLIO ════════════ -->
+<section id="portfolio" aria-label="Portfolio and transformations">
+  <div class="container" style="padding-top:100px; padding-bottom:100px;">
+
+    <div class="portfolio-header reveal">
+      <span class="label">Results & Transformations</span>
+      <h2>The Work Speaks<br><em class="serif-italic gradient-text">For Itself</em></h2>
+      <p style="color:var(--white-dim); max-width:440px; margin:16px auto 0; font-size:0.95rem;">
+        Real clients, real transformations. Click any image to view full details.
+      </p>
+    </div>
+
+    <div class="portfolio-grid">
+      <!-- Tall featured -->
+      <div class="portfolio-item reveal d1" onclick="openLightbox('Signature Brow Design')" role="button" tabindex="0" aria-label="View Signature Brow Design">
+        <div class="portfolio-thumb">
+          <div class="thumb-icon">✦</div>
+          <span>Signature Brows</span>
+        </div>
+        <div class="portfolio-overlay">
+          <span class="portfolio-overlay-label">Brow Design</span>
+          <div class="portfolio-overlay-title">Signature Transformation</div>
+        </div>
+        <div class="zoom-hint">⊕</div>
+      </div>
+      <!-- Others -->
+      <div class="portfolio-item reveal d2" onclick="openLightbox('Lash Extension Set')" role="button" tabindex="0" aria-label="View Lash Extension Set">
+        <div class="portfolio-thumb"><div class="thumb-icon">👁</div><span>Lash Extensions</span></div>
+        <div class="portfolio-overlay"><span class="portfolio-overlay-label">Lash Extensions</span><div class="portfolio-overlay-title">Classic Set</div></div>
+        <div class="zoom-hint">⊕</div>
+      </div>
+      <div class="portfolio-item reveal d3" onclick="openLightbox('Brow Lamination')" role="button" tabindex="0" aria-label="View Brow Lamination">
+        <div class="portfolio-thumb"><div class="thumb-icon">✨</div><span>Lamination</span></div>
+        <div class="portfolio-overlay"><span class="portfolio-overlay-label">Brow Lamination</span><div class="portfolio-overlay-title">Feathered & Defined</div></div>
+        <div class="zoom-hint">⊕</div>
+      </div>
+      <div class="portfolio-item reveal d3" onclick="openLightbox('Volume Lash Set')" role="button" tabindex="0" aria-label="View Volume Lash Set">
+        <div class="portfolio-thumb"><div class="thumb-icon">🌟</div><span>Volume Lashes</span></div>
+        <div class="portfolio-overlay"><span class="portfolio-overlay-label">Lash Extensions</span><div class="portfolio-overlay-title">Russian Volume</div></div>
+        <div class="zoom-hint">⊕</div>
+      </div>
+      <div class="portfolio-item reveal d4" onclick="openLightbox('Brow Tint & Shape')" role="button" tabindex="0" aria-label="View Brow Tint and Shape">
+        <div class="portfolio-thumb"><div class="thumb-icon">🎨</div><span>Brow Tint</span></div>
+        <div class="portfolio-overlay"><span class="portfolio-overlay-label">Brow Tint & Shape</span><div class="portfolio-overlay-title">Color Definition</div></div>
+        <div class="zoom-hint">⊕</div>
+      </div>
+      <div class="portfolio-item reveal d5" onclick="openLightbox('Hybrid Lash Set')" role="button" tabindex="0" aria-label="View Hybrid Lash Set">
+        <div class="portfolio-thumb"><div class="thumb-icon">💫</div><span>Hybrid Lashes</span></div>
+        <div class="portfolio-overlay"><span class="portfolio-overlay-label">Lash Extensions</span><div class="portfolio-overlay-title">Hybrid Set</div></div>
+        <div class="zoom-hint">⊕</div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:40px;" class="reveal">
+      <a href="https://www.instagram.com/ellaenhancesmichigan" target="_blank" rel="noopener" class="btn btn-ghost">
+        <span>View Full Portfolio on Instagram</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" onclick="closeLightbox(event)">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close preview">✕</button>
+    <div class="lightbox-img" id="lightbox-content">
+      <span style="letter-spacing:0.15em; text-transform:uppercase; font-size:0.8rem; color:var(--white-dimmer);" id="lightbox-label">Preview</span>
+    </div>
+  </div>
+</div>
+
+<div class="g-line"></div>
+
+<!-- ════════════ 4. BOOKING ════════════ -->
+<section id="booking" aria-label="Book an appointment">
+  <div class="container" style="padding-top:100px; padding-bottom:100px;">
+
+    <div class="section-head reveal">
+      <span class="label">Book Your Appointment</span>
+      <h2>Reserve Your<br><em class="serif-italic gradient-text">Transformation</em></h2>
+    </div>
+
+    <div class="booking-grid">
+      <!-- Left: service selection -->
+      <div class="booking-left">
+        <div class="booking-trust reveal">
+          <div class="booking-trust-icon">🔒</div>
+          <div class="booking-trust-text">
+            <strong>Secure your appointment in seconds.</strong><br>
+            No deposits required to book. Cancel or reschedule anytime.
+          </div>
+        </div>
+
+        <div class="service-select reveal d2">
+          <div class="service-label">Select a Service</div>
+          <div class="service-chips" role="radiogroup" aria-label="Service selection">
+            <div class="service-chip active" onclick="selectService(this)" role="radio" aria-checked="true" tabindex="0">
+              <span class="service-name">Signature Brow Design</span>
+              <span class="service-price">From $65</span>
+            </div>
+            <div class="service-chip" onclick="selectService(this)" role="radio" aria-checked="false" tabindex="0">
+              <span class="service-name">Classic Lash Set</span>
+              <span class="service-price">From $95</span>
+            </div>
+            <div class="service-chip" onclick="selectService(this)" role="radio" aria-checked="false" tabindex="0">
+              <span class="service-name">Volume / Hybrid Lashes</span>
+              <span class="service-price">From $120</span>
+            </div>
+            <div class="service-chip" onclick="selectService(this)" role="radio" aria-checked="false" tabindex="0">
+              <span class="service-name">Brow Lamination</span>
+              <span class="service-price">From $75</span>
+            </div>
+            <div class="service-chip" onclick="selectService(this)" role="radio" aria-checked="false" tabindex="0">
+              <span class="service-name">Lash Lift & Tint</span>
+              <span class="service-price">From $80</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Time slots -->
+        <div class="mini-slots reveal d3">
+          <div class="slots-label">Available Times · Today</div>
+          <div class="time-slots" role="listbox" aria-label="Available time slots">
+            <div class="time-slot taken" role="option" aria-disabled="true">9:00 AM</div>
+            <div class="time-slot" onclick="selectSlot(this)" role="option" tabindex="0">10:00 AM</div>
+            <div class="time-slot" onclick="selectSlot(this)" role="option" tabindex="0">11:30 AM</div>
+            <div class="time-slot taken" role="option" aria-disabled="true">1:00 PM</div>
+            <div class="time-slot" onclick="selectSlot(this)" role="option" tabindex="0">2:30 PM</div>
+            <div class="time-slot" onclick="selectSlot(this)" role="option" tabindex="0">4:00 PM</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: calendar embed -->
+      <div class="booking-right reveal d2">
+        <div class="cal-embed-box">
+          <div class="cal-logo">📅</div>
+          <div class="cal-title">Choose Your Date</div>
+          <p class="cal-sub">
+            Connect your Calendly, Square Appointments, or Fresha account to enable live booking directly on this page.
+          </p>
+          <!-- Replace this div with your Calendly embed: -->
+          <!-- <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR_LINK" style="min-width:320px;height:630px;"></div> -->
+          <!-- <script src="https://assets.calendly.com/assets/external/widget.js"></script> -->
+          <a href="https://www.instagram.com/ellaenhancesmichigan" target="_blank" rel="noopener" class="btn btn-primary">
+            <span>✦ Book via Instagram DM</span>
+          </a>
+          <p style="font-size:0.72rem; color:var(--white-dimmer); margin-top:4px; letter-spacing:0.08em;">
+            or <a href="mailto:hello@ellaenhances.com" style="color:var(--purple-light); text-decoration:none;">hello@ellaenhances.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="g-line"></div>
+
+<!-- ════════════ 5. REVIEWS ════════════ -->
+<section id="reviews" aria-label="Client reviews">
+  <div style="padding-top:100px; padding-bottom:100px;">
+
+    <div class="container">
+      <div class="reviews-header reveal">
+        <span class="label">Client Love</span>
+        <h2>What They're<br><em class="serif-italic gradient-text">Saying</em></h2>
+      </div>
+    </div>
+<!-- 
+    <div class="reviews-track-wrap">
+      <div class="reviews-slider" id="reviewsSlider" role="list" aria-label="Client testimonials">
+
+        <div class="review-card" role="listitem">
+          <div class="stars" aria-label="5 stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-text">"Ella is literally the only person I trust with my brows. She listens to exactly what you want and always delivers something even better. I get compliments everywhere I go now."</p>
+          <div class="review-author">
+            <div class="author-avatar">A</div>
+            <div>
+              <div class="author-name">Aaliyah M.</div>
+              <div class="author-service">Signature Brow Design</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card" role="listitem">
+          <div class="stars" aria-label="5 stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-text">"My lashes have never looked this good. The whole experience felt luxurious — the studio is beautiful, the vibe is calming, and Ella is an absolute artist. Obsessed."</p>
+          <div class="review-author">
+            <div class="author-avatar" style="background:linear-gradient(135deg,#E8748A,#8B2FC9);">J</div>
+            <div>
+              <div class="author-name">Jordan T.</div>
+              <div class="author-service">Volume Lash Set</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card" role="listitem">
+          <div class="stars" aria-label="5 stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-text">"Brow lamination changed my morning routine completely. I wake up and my brows are already perfect. Ella is so skilled and the results look so natural. 10/10 every single time."</p>
+          <div class="review-author">
+            <div class="author-avatar" style="background:linear-gradient(135deg,#A855F7,#E8748A);">K</div>
+            <div>
+              <div class="author-name">Kayla R.</div>
+              <div class="author-service">Brow Lamination</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card" role="listitem">
+          <div class="stars" aria-label="5 stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-text">"I was nervous about getting lash extensions for the first time but Ella made me feel so comfortable. She explained every step and the result was STUNNING. I'll never go anywhere else."</p>
+          <div class="review-author">
+            <div class="author-avatar" style="background:linear-gradient(135deg,#C084FC,#E8748A);">N</div>
+            <div>
+              <div class="author-name">Naomi B.</div>
+              <div class="author-service">Classic Lash Set</div>
+            </div>
+          </div>
+        </div> 
+-->
+        <div class="review-card" role="listitem">
+          <div class="stars" aria-label="5 stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-text">"Honestly, booking with Ella is self-care at its finest. The attention to detail is unreal. She shaped my brows in a way that completely lifted my whole face. Worth every penny."</p>
+          <div class="review-author">
+            <div class="author-avatar" style="background:linear-gradient(135deg,#8B2FC9,#C084FC);">S</div>
+            <div>
+              <div class="author-name">Annonymous</div>
+              <div class="author-service">Brow Design & Tint</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slider-nav" role="tablist" aria-label="Review navigation">
+      <div class="slider-dot active" role="tab" onclick="goToReview(0)"></div>
+      <div class="slider-dot" role="tab" onclick="goToReview(1)"></div>
+      <div class="slider-dot" role="tab" onclick="goToReview(2)"></div>
+      <div class="slider-dot" role="tab" onclick="goToReview(3)"></div>
+      <div class="slider-dot" role="tab" onclick="goToReview(4)"></div>
+    </div>
+
+  </div>
+</section>
+
+<div class="g-line"></div>
+
+<!-- ════════════ 6. INSTAGRAM ════════════ -->
+<section id="instagram" aria-label="Instagram feed">
+  <div class="container" style="padding-top:100px; padding-bottom:100px;">
+
+    <div class="ig-header reveal">
+      <span class="label">Follow the Journey</span>
+      <h2>Live Beautifully,<br><em class="serif-italic gradient-text">Daily</em></h2>
+      <a href="https://www.instagram.com/ellaenhancesmichigan" target="_blank" rel="noopener" class="ig-handle">
+        <span class="ig-icon">📸</span>
+        <span>@ellaenhancesmichigan</span>
+      </a>
+    </div>
+
+    <div class="ig-grid reveal d2">
+      <!-- 6 placeholder posts — replace with real Instagram embed or API -->
+      <a class="ig-post" href="https://www.instagram.com/ellaenhancesmichigan" target="_blank" rel="noopener" aria-label="Instagram post 1">
+        <div class="ig-post-inner">✦</div>
+        <div class="ig-post-overlay">📸</div>
+      </a>
+      <a class="ig-post" href="https://www.instagram.com/ellaenhancesmichigan" target="_blank" rel="noopener" aria-label="Instagram post 2">
+        <div class="ig-post-inner">👁</div>
+        <div class="ig-post-overlay">📸</div>
+      </a>
+      <a class="ig-post" href="https://www.instagram.com/ellaenhancesmichigan" target="_blank" rel="noopener" aria-label="Instagram post 3">
+        <div class="ig-post-inner">✨</div>
+        <div class="ig-post-overlay">📸</div>
+      </a>
+      <a class="ig-post" href="https://www.instagram.com/ellaenhancesmichigan" target="_blank" rel="noopener" aria-label="Instagram post 4">
+        <div class="ig-post-inner">🌟</div>
+        <div class="ig-post-overlay">📸</div>
+      </a>
+      <a class="ig-post" href="https://www.instagram.com/ellaenhancesmichigan" target="_blank" rel="noopener" aria-label="Instagram post 5">
+        <div class="ig-post-inner">💫</div>
+        <div class="ig-post-overlay">📸</div>
+      </a>
+      <a class="ig-post" href="https://www.instagram.com/ellaenhancesmichigan" target="_blank" rel="noopener" aria-label="Instagram post 6">
+        <div class="ig-post-inner">🔮</div>
+        <div class="ig-post-overlay">📸</div>
+      </a>
+    </div>
+
+    <!-- Note: For live Instagram posts, use LightWidget (lightwidget.com) or Elfsight — both have free tiers and embed with one script tag -->
+    <div class="ig-cta-wrap reveal">
+      <a href="https://www.instagram.com/ellaenhancesmichigan" target="_blank" rel="noopener" class="btn btn-ghost">
+        <span>Follow @ellaenhancesmichigan</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<div class="g-line"></div>
+
+<!-- ════════════ 7. FINAL CTA ════════════ -->
+<section id="cta-final" aria-label="Call to action">
+  <div class="container">
+    <div class="cta-glow-wrap reveal">
+      <div class="cta-inner">
+        <span class="label" style="display:block; text-align:center;">Ready to Begin?</span>
+        <h2 class="cta-final-h2">
+          Ready to Enhance<br>
+          <em class="serif-italic gradient-text">Your Beauty?</em>
+        </h2>
+        <p class="cta-final-sub">
+          Your transformation is one appointment away.<br>
+          Join hundreds of clients who trust Ella with their look.
+        </p>
+        <a href="#booking" class="btn btn-primary btn-glow-pulse" style="font-size:0.85rem; padding:17px 44px;">
+          <span>✦ &nbsp;Book Your Appointment</span>
+        </a>
+        <p style="margin-top:20px; color:var(--white-dimmer); font-size:0.78rem; letter-spacing:0.1em;">
+          No deposit required · Easy cancellation · Michigan-based
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ 8. FOOTER ════════════ -->
+<footer aria-label="Site footer">
+  <div class="container">
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <span class="footer-logo">Ella Enhances</span>
+        <p class="footer-tagline">Beauty Designed by God,<br>Enhanced by Ella.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/ellaenhancesmichigan" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+            📸
+          </a>
+          <a href="mailto:hello@ellaenhances.com" class="social-link" aria-label="Email">
+            ✉️
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul class="footer-links" role="list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#booking">Book Appointment</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#instagram">Instagram</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact">
+          <div class="contact-item">
+            <span>📍</span>
+            <span>Michigan, USA</span>
+          </div>
+          <div class="contact-item">
+            <span>✉️</span>
+            <a href="mailto:hello@ellaenhances.com">hello@ellaenhances.com</a>
+          </div>
+          <div class="contact-item">
+            <span>📱</span>
+            <a href="tel:+1xxxxxxxxxx">(xxx) xxx-xxxx</a>
+          </div>
+          <div class="contact-item">
+            <span>📸</span>
+            <a href="https://www.instagram.com/ellaenhancesmichigan" target="_blank" rel="noopener">@ellaenhancesmichigan</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Ella Enhances. All rights reserved.</p>
+      <p class="footer-made" style="font-style:italic; font-family:var(--serif);">Beauty Designed by God, Enhanced by Ella ✦</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════ SCRIPTS ════════════ -->
+<script>
+  /* ── Nav scroll ── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  }, { passive: true });
+
+  /* ── Mobile menu ── */
+  function openMobile() {
+    document.getElementById('mobile-menu').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobile() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ── Reveal on scroll ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+
+  /* ── Lightbox ── */
+  function openLightbox(label) {
+    document.getElementById('lightbox-label').textContent = label + ' · Portfolio Preview';
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(e) {
+    if (!e || e.target === document.getElementById('lightbox') || e.target.classList.contains('lightbox-close')) {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  /* ── Service chips ── */
+  function selectService(el) {
+    document.querySelectorAll('.service-chip').forEach(c => {
+      c.classList.remove('active');
+      c.setAttribute('aria-checked', 'false');
+    });
+    el.classList.add('active');
+    el.setAttribute('aria-checked', 'true');
+  }
+
+  /* ── Time slots ── */
+  function selectSlot(el) {
+    if (el.classList.contains('taken')) return;
+    document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('sel'));
+    el.classList.add('sel');
+  }
+
+  /* ── Reviews slider ── */
+  const slider = document.getElementById('reviewsSlider');
+  const dots = document.querySelectorAll('.slider-dot');
+
+  function goToReview(i) {
+    const card = slider.querySelectorAll('.review-card')[i];
+    card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+  }
+
+  slider.addEventListener('scroll', () => {
+    const cards = slider.querySelectorAll('.review-card');
+    let closest = 0, minDist = Infinity;
+    cards.forEach((c, i) => {
+      const dist = Math.abs(c.getBoundingClientRect().left - slider.getBoundingClientRect().left);
+      if (dist < minDist) { minDist = dist; closest = i; }
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === closest));
+  }, { passive: true });
+
+  /* ── Portfolio keyboard nav ── */
+  document.querySelectorAll('.portfolio-item').forEach(item => {
+    item.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') item.click();
+    });
+  });
+
+  /* ── Smooth scroll for all anchor links ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+
+</body>
+</html>
